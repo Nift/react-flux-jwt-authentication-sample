@@ -37,7 +37,8 @@ class LoginStore extends BaseStore {
   }
 
   isLoggedIn() {
-    return !!this._user;
+    if(!this._user) return false;
+    return this._user.exp > (Math.floor(Date.now() / 1000));
   }
 }
 
